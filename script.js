@@ -7,7 +7,6 @@ const colorOptionsContainer = document.querySelector('[data-testid="colorOptions
 const body = document.querySelector('body');
 
 let score = 0;
-let highScore = 0;
 let targetColor;
 let correctButtonIndex;
 
@@ -54,10 +53,6 @@ function checkGuess(event) {
             resetGame();
         }, 1000);
 
-        if (score > highScore) {
-            highScore = score;
-            document.querySelector('.highscore').textContent = highScore;
-        }
     } else {
         modal.style.display = "block";
         modalOverlay.style.display = "block";
@@ -85,7 +80,9 @@ function closeModal() {
     resetGame();
   }
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+span.onclick = function () {
+    score = 0;
+    scoreValue.textContent = score;
     closeModal()
   }
 
